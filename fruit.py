@@ -13,6 +13,7 @@ snake_geometry = [[10, 15], [11, 15], [12, 15]]
 keys = [pyxel.KEY_UP, pyxel.KEY_DOWN, pyxel.KEY_RIGHT, pyxel.KEY_LEFT]
 snake_direction = [1, 0]
 
+
 def update():
     global snake_direction, snake_geometry, fruit
     if pyxel.btnp(pyxel.KEY_Q):
@@ -33,22 +34,21 @@ def update():
     snake_head = snake_geometry[-1]
     new_head = [snake_head[0] + snake_direction[0], snake_head[1] + snake_direction[1]]
     snake_geometry = snake_geometry[1:] + [new_head]
-    if (
-    new_head[0] == fruit[0] and new_head[1] == fruit[1]
-    ) or (
-    new_head[0] > fruit[0] - 1 and new_head[0] < fruit[0] + 1 and
-    new_head[1] > fruit[1] - 1 and new_head[1] < fruit[1] + 1
+    if (new_head[0] == fruit[0] and new_head[1] == fruit[1]) or (
+        new_head[0] > fruit[0] - 1
+        and new_head[0] < fruit[0] + 1
+        and new_head[1] > fruit[1] - 1
+        and new_head[1] < fruit[1] + 1
     ):
         fruit = [random.randint(0, 30), random.randint(0, 30)]
         snake_geometry = snake_geometry + [new_head]
-    if new_head[0] > 30 or new_head[1] > 30 or new_head[0]< 0 or new_head[1] < 0:
+    if new_head[0] > 30 or new_head[1] > 30 or new_head[0] < 0 or new_head[1] < 0:
         snake_geometry = [[10, 15], [11, 15], [12, 15]]
     if new_head in obstacle:
         snake_geometry = [[10, 15], [11, 15], [12, 15]]
-    if fruit in obstacle :
-        fruit = [random.randint(0,30), random.randint(0,30)]
-    
-        
+    if fruit in obstacle:
+        fruit = [random.randint(0, 30), random.randint(0, 30)]
+
 
 def draw():
     pyxel.cls(7)
