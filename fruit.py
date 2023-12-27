@@ -48,6 +48,7 @@ def update():
         snake_geometry = [[10, 15], [11, 15], [12, 15]]
     if fruit in obstacle:
         fruit = [random.randint(0, 30), random.randint(0, 30)]
+    
 
 
 def draw():
